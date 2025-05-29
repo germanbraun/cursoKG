@@ -1,0 +1,5 @@
+SELECT * 
+FROM <http://www.ontotext.com/explicit>
+WHERE {
+ ?s ?p ?o .
+}

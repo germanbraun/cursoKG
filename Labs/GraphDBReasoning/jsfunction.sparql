@@ -1,0 +1,11 @@
+PREFIX jsfn:<http://www.ontotext.com/js#>
+INSERT DATA {
+    [] jsfn:register '''
+    function lname(value) {
+     if(value instanceof org.eclipse.rdf4j.model.IRI)
+         return value.getLocalName();
+     else
+         return ""+value;
+    }
+'''
+}

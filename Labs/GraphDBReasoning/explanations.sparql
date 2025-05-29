@@ -1,0 +1,18 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX onto: <http://www.ontotext.com/>
+prefix proof: <http://www.ontotext.com/proof/>
+PREFIX jsfn: <http://www.ontotext.com/js#>
+SELECT (concat('(',jsfn:lname(?subject),',',jsfn:lname(?predicate),',',jsfn:lname(?object),')') as ?stmt)
+    ?rule ?s ?p ?o ?context
+FROM <http://www.ontotext.com/implicit>
+WHERE {
+    {?subject ?predicate ?object}
+
+    ?ctx proof:explain (?subject ?predicate ?object) .
+    ?ctx proof:rule ?rule .
+    ?ctx proof:subject ?s .
+    ?ctx proof:predicate ?p .
+    ?ctx proof:object ?o .
+    ?ctx proof:context ?context .
+}
